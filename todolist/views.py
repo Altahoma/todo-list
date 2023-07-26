@@ -46,3 +46,10 @@ class TagCreateView(generic.CreateView):
     fields = "__all__"
     template_name = "todolist/tag_form.html"
     success_url = reverse_lazy("todolist:tag-list")
+
+
+class TagUpdateView(generic.UpdateView):
+    model = Tag
+    fields = "__all__"
+    template_name = "todolist/tag_form.html"
+    success_url = reverse_lazy("todolist:tag-list")

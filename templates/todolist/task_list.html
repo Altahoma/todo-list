@@ -21,7 +21,13 @@
       {% for task in task_list %}
         <li>
           <p>{{ task.content }}</p>
-          <p>{{ task.is_done }}</p>
+          <p>
+            {% if task.is_done %}
+              Done
+            {% else %}
+              Not done
+            {% endif %}
+          </p>
           <p>Created: {{ task.created }}</p>
           <p>Deadline: {{ task.deadline }}</p>
           <p>Tags:
@@ -29,6 +35,15 @@
               {{ tag.name }}
             {% endfor %}
           </p>
+          {% if task.is_done %}
+            <a href="{% url 'todolist:toggle-task' pk=task.id %}" class="btn btn-secondary link-to-page">
+              Undo
+            </a>
+          {% else %}
+            <a href="{% url 'todolist:toggle-task' pk=task.id %}" class="btn btn-success link-to-page">
+              Complete
+            </a>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

@@ -30,12 +30,19 @@ class TaskDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todolist:task-list")
 
 
-class TagList(generic.ListView):
-    model = Tag
-
-
 def toggle_task_completion(request, pk):
     task = get_object_or_404(Task, id=pk)
     task.is_done = not task.is_done
     task.save()
     return HttpResponseRedirect(reverse_lazy("todolist:task-list"))
+
+
+class TagList(generic.ListView):
+    model = Tag
+
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = "__all__"
+    template_name = "todolist/tag_form.html"
+    success_url = reverse_lazy("todolist:tag-list")

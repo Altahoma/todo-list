@@ -10,7 +10,7 @@
       <h1>Tag list</h1>
     </div>
     <div class="col">
-      <a href="{% url 'todolist:task-create' %}">
+      <a href="{% url 'todolist:tag-create' %}">
         <button type="button" class="btn btn-primary">Add tag</button>
       </a>
     </div>
@@ -23,6 +23,7 @@
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
     </tr>
+    </thead>
     <tbody>
     {% for tag in tag_list %}
       <tr>
@@ -38,9 +39,7 @@
           </a>
         </td>
       </tr>
-
     {% endfor %}
     </tbody>
-    </thead>
   </table>
 {% endblock %}

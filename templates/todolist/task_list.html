@@ -44,6 +44,11 @@
               Complete
             </a>
           {% endif %}
+          <p>
+            <a href="{% url 'todolist:task-update' pk=task.id %}">
+              <button type="button" class="btn btn-primary">Update</button>
+            </a>
+          </p>
         </li>
       {% endfor %}
     </ul>

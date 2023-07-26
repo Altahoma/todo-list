@@ -1,6 +1,6 @@
 from django.views import generic
 
-from models import Task, Tag
+from .models import Task, Tag
 
 
 class TaskList(generic.ListView):

@@ -15,39 +15,34 @@
       </a>
     </div>
   </div>
-
-  <div class="card mb-3 ">
+  <div class="card mb-3">
     <div class="card-body">
-
       <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Update</th>
-      <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for tag in tag_list %}
-      <tr>
-        <td>{{ tag.name }}</td>
-        <td>
-          <a href="{% url 'todolist:tag-update' pk=tag.id %}">
-            <button type="button" class="btn btn-secondary">Update</button>
-          </a>
-        </td>
-        <td>
-          <a href="{% url 'todolist:tag-delete' pk=tag.id %}">
-            <button type="button" class="btn btn-danger">Delete</button>
-          </a>
-        </td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tag in tag_list %}
+          <tr>
+            <td>{{ tag.name }}</td>
+            <td>
+              <a href="{% url 'todolist:tag-update' pk=tag.id %}">
+                <button type="button" class="btn btn-secondary">Update</button>
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'todolist:tag-delete' pk=tag.id %}">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
-
-
 {% endblock %}

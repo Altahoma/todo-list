@@ -10,4 +10,5 @@ class TaskForm(forms.ModelForm):
 
         widgets = {
             "deadline": forms.DateTimeInput(attrs={"type": "datetime-local"}),
+            "tags": forms.CheckboxSelectMultiple(),
         }

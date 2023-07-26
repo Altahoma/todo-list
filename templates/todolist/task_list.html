@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Tasks</title>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      <h1>TODO list</h1>
+    </div>
+    <div class="col">
+      <a href="{% url 'todolist:task-create' %}">
+        <button type="button" class="btn btn-primary">Add task</button>
+      </a>
+    </div>
+  </div>
+  {% if task_list %}
+    {% for task in task_list %}
+      <div class="card mb-3 col-8">
+        <div class="card-body">
+          <p class="fw-bold">
+            {{ task.content }}
+            {% if task.is_done %}
+              <span class="badge rounded-pill bg-success">Done</span>
+            {% else %}
+              <span class="badge rounded-pill bg-warning text-dark">Not done</span>
+            {% endif %}
+          </p>
+          <p>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                Created: {{ task.created }}
+              </div>
+              {% if task.deadline %}
+                <div class="col text-danger">
+                  Deadline: {{ task.deadline }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          </p>
+          <div class="text-muted">
+            <sapn class="fw-bold">Tags:</sapn>
+            {% for tag in task.tags.all %}
+              #{{ tag.name }}
+            {% endfor %}
+          </div>
+          <p>
+          <div class="btn-group" role="group">
+            {% if task.is_done %}
+              <a href="{% url 'todolist:toggle-task' pk=task.id %}">
+                <button type="button" class="btn btn-secondary">Undo</button>
+              </a>
+            {% else %}
+              <a href="{% url 'todolist:toggle-task' pk=task.id %}">
+                <button type="button" class="btn btn-success">Complete</button>
+              </a>
+            {% endif %}
+            <a href="{% url 'todolist:task-update' pk=task.id %}">
+              <button type="button" class="btn btn-primary ms-3">Update</button>
+            </a>
+            <a href="{% url 'todolist:task-delete' pk=task.id %}">
+              <button type="button" class="btn btn-danger ms-3">Delete</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>There are no tasks.</p>
+  {% endif %}
+{% endblock %}

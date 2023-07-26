@@ -35,18 +35,25 @@
               {{ tag.name }}
             {% endfor %}
           </p>
-          {% if task.is_done %}
-            <a href="{% url 'todolist:toggle-task' pk=task.id %}" class="btn btn-secondary link-to-page">
-              Undo
-            </a>
-          {% else %}
-            <a href="{% url 'todolist:toggle-task' pk=task.id %}" class="btn btn-success link-to-page">
-              Complete
-            </a>
-          {% endif %}
+          <p>
+            {% if task.is_done %}
+              <a href="{% url 'todolist:toggle-task' pk=task.id %}">
+                <button type="button" class="btn btn-secondary">Undo</button>
+              </a>
+            {% else %}
+              <a href="{% url 'todolist:toggle-task' pk=task.id %}">
+                <button type="button" class="btn btn-success">Complete</button>
+              </a>
+            {% endif %}
+          </p>
           <p>
             <a href="{% url 'todolist:task-update' pk=task.id %}">
               <button type="button" class="btn btn-primary">Update</button>
+            </a>
+          </p>
+          <p>
+            <a href="{% url 'todolist:task-delete' pk=task.id %}">
+              <button type="button" class="btn btn-danger">Delete</button>
             </a>
           </p>
         </li>

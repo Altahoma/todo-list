@@ -9,6 +9,7 @@ from .forms import TaskForm
 
 class TaskList(generic.ListView):
     model = Task
+    paginate_by = 3
 
 
 class TaskCreateView(generic.CreateView):
@@ -39,6 +40,7 @@ def toggle_task_completion(request, pk):
 
 class TagList(generic.ListView):
     model = Tag
+    paginate_by = 8
 
 
 class TagCreateView(generic.CreateView):
